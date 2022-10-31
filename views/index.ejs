@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Dua Al-Madinah</title>
+
+</head>
+
+<body>
+  <%- include('navbar');  -%>
+  <section id="top-cont" class="row">
+    <video src="videos/video.mp4" autoplay muted loop class="col-lg-7   left-vid" style="padding:0px;">
+    </video>
+    <div class="col-lg-5 ">
+      <h3 class="right-quote "> User Step by Step Guide</h3>
+      <ul class="right-quote ">
+        <li>Select A City where you want to go.</li>
+        <li>Select A Package accordingly.</li>
+        <li>Fill in your details.</li>
+        <li>Keep Token Number safe that is generated after you perform step 3.</li>
+        <li>Keep checking your tour status as we are working for you.</li>
+
+      </ul>
+
+    </div>
+  </section>
+
+  <section id="cities">
+    <h1 class=" heading">Select City</h1>
+    <div class="carousel" data-flickity='{ "contain": true }'>
+      <%cityDetailsLists.forEach(function(cityDetailsList){%>
+      <div class="carousel-cell">
+        <form class="" action="/common" method="post">
+          <input type="hidden" name="city_name" value="<%=cityDetailsList.cityName%>" />
+          <button class="city-image" type="submit" class="btn btn primary"><img class="city-image" src="/uploads/<%=cityDetailsList.cityImage%>"></button>
+        </form>
+        <h3><%=cityDetailsList.cityName%></h3>
+      </div>
+      <%})%>
+    </div>
+  </section>
+
+  <section id="services">
+    <h1 class="service-heading heading">Our Services</h1>
+    <div class="ser">
+      <div class="row">
+        <img src="images/hotel-booking-service.jfif" alt="" class="ser-img col-lg-4">
+        <div class="col-lg-8 ">
+          <br>
+          <h3 class="service-name">Hotel Booking Service</h3>
+          <p class="ser-description">We offers a wide range of luxury, deluxe and budget hotels to our customers.
+            Choose to stay in luxury and comfort with greatest discounts available on hotel booking.
+            Our hotel booking system ensures that you get to view the best pool of options before you decide your choice of hotel accommodation.
+            With us, you can choose the type of accommodation you want to stay at, be it a hotel,
+            a Bed & Breakfast or even a resort.
+            We offer exceptional Hotel Booking Services.
+            With our on line Hotel Bookings you may state your necessities and the most excellent potential Hotel reservation deal will be accessible to you.
+            . We are associated with the best hotels in the industry.
+            Therefore, we are able to ensure hassle free and royal services to the clients.
+            </p>
+        </div>
+      </div>
+    </div>
+    <div class="divider">
+
+    </div>
+    <div class="ser">
+      <div class="row">
+        <img src="images/flight-booking-service.jpg" alt="" class="ser-img col-lg-4">
+        <div class="col-lg-8 ">
+          <br>
+          <h3 class="service-name">Flight Booking Service</h3>
+          <p class="ser-description">Cheapest Airfare for all Flight Bookings with no convenience/booking fees.
+            Our intelligent Flight Search engines will find you the best available flight options at the lowest possible fares - all with the convenience of just a few clicks.
+             It is our endeavor to find you the most cost effective flight options in the shortest possible time.
+             Be it Domestic flight or International flight, searching across airlines and getting the best possible air-fare deals and flight connections was never so convenient.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="divider">
+
+    </div>
+    <div class="ser">
+      <div class="row">
+        <img src="images/umrah-hajj-service.png" alt="" class="ser-img col-lg-4" height="250px">
+        <div class="col-lg-8 ">
+          <br>
+          <h3 class="service-name">Hajj, Umrah & Ziyarath Service</h3>
+          <p class="ser-description">We are prominent service provider of Hajj Umrah Ziyarat Tour Services.
+             We are specialize in Hajj and Umrah packages with an outstanding reputation for customer service.
+             All-inclusive packages with direct flights, luxurious hotels, buses and tents.All available at lower charges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrapper">
+      <h1 class="heading">Testimonial</h1>
+      <div class="team">
+        <%testimonials.forEach(function(singletestimonial){%>
+        <div class="team_member">
+          <div class="team_img">
+            <img src="<%=singletestimonial.dp%>" style="border-radius:50%">
+          </div>
+          <h3><%=singletestimonial.name%></h3>
+
+          <p><%=singletestimonial.review%></p>
+        </div>
+
+
+        <%})%>
+
+
+        <!-- <div class="team_member">
+          <div class="team_img">
+            <img src="images/dp2.png" alt="Team_image">
+          </div>
+          <h3>Rosie Meg</h3>
+          <p class="role">Tester</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat tempora, voluptatum quas facere dolorum aut cumque nihil nulla harum nemo distinctio quam blanditiis dignissimos.</p>
+        </div>
+        <div class="team_member">
+          <div class="team_img">
+            <img src="images/dp3.png" alt="Team_image">
+          </div>
+          <h3>Alex Wood</h3>
+          <p class="role">Support Lead</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat tempora, voluptatum quas facere dolorum aut cumque nihil nulla harum nemo distinctio quam blanditiis dignissimos.</p>
+        </div> -->
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <%- include('footer');  -%>
+
+
+  <script src="cityname.js">
+    < script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" >
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+</body>
+
+</html>
