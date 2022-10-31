@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Dua Al-Madinah</title>
+
+</head>
+
+<body>
+  <%- include('navbar');  -%>
+  <section id="ContactUs">
+      <form class="" action="mailto:duaalmadinah2022@gmail.com" method="post" enctype="text/plain" >
+        <div class="col-lg-5">
+          <h2 class="form-label"> Your Name:</h2>
+          <!-- <label  class="form-label"> Your Name:</label> -->
+          <input type="text" class="form-control" name="YourName" value="" ><br>
+
+        </div>
+        <div class="col-lg-5">
+          <h2 class="form-label"> Your Email:</h2>
+          <!-- <label  class="form-label"> Your Email:</label> -->
+          <input type="email" class="form-control" name="YourEmail" value="" ><br>
+
+        </div>
+        <div class="col-lg-6">
+          <h2 class="form-label">Your Message:</h2>
+          <!-- <label  class=""> Your Message:</label><br> -->
+        <textarea  class="form-control" name="YourMessage" rows="10" cols="10"></textarea>
+
+        </div>
+        <!-- <div > -->
+         <button styles="text-align:center" type="submit" name="button" class="btn btn-outline-dark btn-sma submit-btn ">Submit</button>
+
+          <!-- <button type="submit" name="button" class="btn btn-outline-dark submit-btn">Submit</button> -->
+          <!-- <button type="submit" name="" class="btn btn-outline-dark btn-sm contact-button">Submit</button> -->
+        <!-- </div> -->
+
+
+      </form>
+
+
+    </section>
+
+
+    <%- include('footer');  -%>
+
+
+  <script src="cityname.js">
+    < script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" >
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+  </script>
+
+</body>
+
+</html>
