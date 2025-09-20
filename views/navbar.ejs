@@ -354,6 +354,7 @@
   }
 
   /* Mobile Responsive */
+  /* Mobile Responsive */
   @media (max-width: 991px) {
     .brand-name {
       font-size: 1.5rem !important;
@@ -365,21 +366,112 @@
 
     .nav-link-custom {
       margin: 0.25rem 0;
+      padding: 1rem !important;
+      text-align: center;
+      background-color: rgba(54, 181, 176, 0.05);
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+    }
+
+    .navbar-nav {
+      width: 100%;
+      padding: 1rem 0;
+    }
+
+    .nav-item {
+      width: 100%;
+    }
+
+    .welcome-message {
+      display: none !important;
+    }
+
+    /* Profile button adjustments for mobile */
+    .profile-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
     }
   }
 
   @media (max-width: 768px) {
+    .container-fluid {
+      padding: 0.75rem 1rem !important;
+    }
+
+    .brand-name {
+      font-size: 1.3rem !important;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+    }
+
     .navbar-nav {
       padding-top: 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link-custom {
+      font-size: 1.1rem !important;
+      padding: 1.25rem 1rem !important;
+      background-color: rgba(54, 181, 176, 0.08);
+      border: 1px solid rgba(54, 181, 176, 0.2);
+    }
+
+    .nav-link-custom:hover {
+      background-color: rgba(54, 181, 176, 0.15);
+      color: #36b5b0 !important;
     }
 
     .custom-dropdown {
       width: 100%;
       margin-top: 8px !important;
+      position: fixed !important;
+      top: auto !important;
+      right: 1rem !important;
+      left: 1rem !important;
+    }
+
+    /* Better mobile hamburger */
+    .navbar-toggler {
+      border: 2px solid #36b5b0;
+      padding: 0.5rem;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 2px rgba(54, 181, 176, 0.25);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2336b5b0' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
     .welcome-message {
       display: none !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .brand-name {
+      font-size: 1.1rem !important;
+    }
+
+    .brand-text {
+      margin-left: 0.5rem;
+    }
+
+    .nav-link-custom {
+      font-size: 1rem !important;
+      padding: 1rem 0.75rem !important;
+    }
+
+    .profile-btn {
+      width: 38px;
+      height: 38px;
+      font-size: 13px;
     }
   }
 </style>
