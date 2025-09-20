@@ -1,30 +1,420 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg">
+  <div class="container-fluid px-4">
+    <!-- Brand Section -->
+    <div class="d-flex align-items-center">
+      <a
+        class="navbar-brand d-flex align-items-center text-decoration-none"
+        href="/entry"
+      >
+        <div class="logo-container me-3">
+          <img
+            src="images/DuaAlmadinah.jpg"
+            alt="Dua-Al-Madinah Logo"
+            width="50"
+            height="50"
+            class="rounded-circle logo-img"
+          />
+        </div>
+        <div class="brand-text">
+          <span class="fw-bold text-dark fs-3 brand-name">Dua-Al-Madinah</span>
+          <div class="brand-tagline">Your Spiritual Journey Partner</div>
+        </div>
+      </a>
+    </div>
 
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/entry">
-      <img src="images/DuaAlmadinah.jpg" alt="" width="50">
-    </a>
-    <a class="navbar-brand" href="/entry">Dua-Al-Madinah</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Mobile Toggle Button -->
+    <button
+      class="navbar-toggler border-0 custom-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item ">
-          <a class="nav-link bold-text" href="/Bookings">My Booking</a>
-        </li>
-        
-        <li>
-          <p class=" bold-text">
-            Logged In as <br> <%= name%></p>
+
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <!-- Center Navigation Links -->
+      <ul class="navbar-nav mx-auto mt-1 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-custom"
+            style="font-size: 1rem"
+            href="/entry"
+          >
+            <i class="fas fa-home me-1"></i>
+            Home
+          </a>
         </li>
 
-
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-custom"
+            style="font-size: 1rem"
+            href="/Bookings"
+          >
+            <i class="fas fa-calendar-check me-1"></i>
+            My Bookings
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-custom"
+            style="font-size: 1rem"
+            href="/contactUs"
+          >
+            <i class="fas fa-envelope me-1"></i>
+            Contact
+          </a>
+        </li>
       </ul>
 
+      <!-- Right Side Content -->
+      <div class="d-flex align-items-center">
+        <!-- Welcome Message -->
+        <div class="welcome-message me-3 d-none d-lg-block">
+          <span class="text-dark small">Welcome back,</span>
+          <div class="user-name-display fw-semibold"></div>
+        </div>
 
-      <a class="btn btn-light btn-md btn-dark" href="/logout" role="button">Log-Out</a>
-
+        <!-- User Profile Dropdown -->
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle rounded-circle d-flex align-items-center justify-content-center profile-btn position-relative"
+            type="button"
+            id="userDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="initials-text"></span>
+            <div class="online-indicator"></div>
+          </button>
+          <ul
+            class="dropdown-menu dropdown-menu-end custom-dropdown"
+            aria-labelledby="userDropdown"
+          >
+            <li class="dropdown-header">
+              <div class="d-flex align-items-center">
+                <div class="profile-avatar me-2"></div>
+                <div>
+                  <div class="fw-semibold user-dropdown-name"></div>
+                  <small class="text-muted">Verified Account</small>
+                </div>
+              </div>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item custom-dropdown-item" href="/Bookings">
+                <div class="dropdown-icon">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+                <div>
+                  <div class="fw-semibold">My Bookings</div>
+                  <small class="text-muted">View your reservations</small>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item custom-dropdown-item" href="/contactUs">
+                <div class="dropdown-icon">
+                  <i class="fas fa-headset"></i>
+                </div>
+                <div>
+                  <div class="fw-semibold">Support</div>
+                  <small class="text-muted">Get help and assistance</small>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item custom-dropdown-item" href="/aboutus">
+                <div class="dropdown-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <div>
+                  <div class="fw-semibold">About Us</div>
+                  <small class="text-muted">Learn more about us</small>
+                </div>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a
+                class="dropdown-item custom-dropdown-item text-danger"
+                href="/logout"
+              >
+                <div class="dropdown-icon">
+                  <i class="fas fa-sign-out-alt"></i>
+                </div>
+                <div>
+                  <div class="fw-semibold">Sign Out</div>
+                  <small class="text-muted">Logout from your account</small>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+
+<style>
+  /* Enhanced Navbar Styling */
+  .navbar {
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* Logo and Brand Styling */
+  .logo-container {
+    position: relative;
+  }
+
+  .logo-img {
+    border: 3px solid #36b5b0;
+    transition: all 0.3s ease;
+  }
+
+  .logo-img:hover {
+    transform: rotate(5deg) scale(1.05);
+    border-color: #20c997;
+  }
+
+  .brand-text {
+    line-height: 1.2;
+  }
+
+  .brand-name {
+    background: linear-gradient(135deg, #2c6975, #1a5460);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand-tagline {
+    font-size: 0.75rem;
+    color: #6c757d;
+    font-weight: 500;
+    margin-top: -3px;
+  }
+
+  /* Navigation Links */
+  .nav-link-custom {
+    color: #2c3e50 !important;
+    font-weight: 600;
+    padding: 0.75rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    margin: 0 0.25rem;
+  }
+
+  .nav-link-custom:hover {
+    color: #1a252f !important;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .nav-link-custom.active {
+    color: #1a252f !important;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .nav-link-custom.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: #1a252f;
+    border-radius: 1px;
+  }
+
+  /* Welcome Message */
+  .welcome-message {
+    text-align: right;
+    line-height: 1.2;
+  }
+
+  .user-name-display {
+    color: #36b5b0;
+    font-size: 0.9rem;
+  }
+
+  /* Enhanced Profile Button */
+  .profile-btn {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #36b5b0, #20c997);
+    border: 3px solid white;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(54, 181, 176, 0.3);
+  }
+
+  .profile-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(54, 181, 176, 0.4);
+    background: linear-gradient(135deg, #20c997, #17a2b8);
+    border-color: white;
+    color: white;
+  }
+
+  .profile-btn:focus {
+    box-shadow: 0 0 0 3px rgba(54, 181, 176, 0.25);
+    background: linear-gradient(135deg, #36b5b0, #20c997);
+    border-color: white;
+    color: white;
+  }
+
+  .online-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: #28a745;
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+
+  /* Enhanced Dropdown */
+  .custom-dropdown {
+    margin-top: 12px !important;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    min-width: 280px;
+    padding: 0.5rem 0;
+    z-index: 9999 !important;
+  }
+
+  .dropdown-header {
+    padding: 1rem 1.5rem 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 0.5rem;
+  }
+
+  .profile-avatar {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #36b5b0, #20c997);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .custom-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .custom-dropdown-item:hover {
+    background-color: rgba(54, 181, 176, 0.08);
+    transform: translateX(5px);
+  }
+
+  .dropdown-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(54, 181, 176, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    color: #36b5b0;
+  }
+
+  .custom-toggler {
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+
+  .custom-toggler:focus {
+    box-shadow: 0 0 0 2px rgba(54, 181, 176, 0.25);
+  }
+
+  /* Remove default dropdown arrow */
+  .profile-btn::after {
+    display: none;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 991px) {
+    .brand-name {
+      font-size: 1.5rem !important;
+    }
+
+    .brand-tagline {
+      display: none;
+    }
+
+    .nav-link-custom {
+      margin: 0.25rem 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar-nav {
+      padding-top: 1rem;
+    }
+
+    .custom-dropdown {
+      width: 100%;
+      margin-top: 8px !important;
+    }
+
+    .welcome-message {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Generate initials and populate user info
+  document.addEventListener("DOMContentLoaded", function () {
+    const name = "<%= name %>" || "User";
+    const nameWords = name.split(" ");
+    let initials = "";
+
+    if (nameWords.length >= 2) {
+      initials = nameWords[0].charAt(0) + nameWords[1].charAt(0);
+    } else {
+      initials = nameWords[0].charAt(0) + (nameWords[0].charAt(1) || "");
+    }
+
+    // Set initials in profile button
+    document.querySelector(".initials-text").textContent =
+      initials.toUpperCase();
+
+    // Set initials in dropdown avatar
+    document.querySelector(".profile-avatar").textContent =
+      initials.toUpperCase();
+
+    // Set user name in welcome message
+    const userNameDisplay = document.querySelector(".user-name-display");
+    if (userNameDisplay) {
+      userNameDisplay.textContent = name;
+    }
+
+    // Set user name in dropdown
+    const userDropdownName = document.querySelector(".user-dropdown-name");
+    if (userDropdownName) {
+      userDropdownName.textContent = name;
+    }
+  });
+</script>

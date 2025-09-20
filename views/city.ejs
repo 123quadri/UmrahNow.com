@@ -1,156 +1,537 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
+      integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title><%=selectedCity[0].cityName%></title>
+  </head>
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/styles.css">
-  <title><%=selectedCity[0].cityName%></title>
-</head>
+  <body>
+    <%- include('navbar'); -%>
+    <section id="packages">
+      <h1 class="heading">Select Package</h1>
 
-<body>
-  <%- include('navbar');  -%>
-
-
-  <section id="about-city">
-    <h1 class="heading">About <%=selectedCity[0].cityName%></h1>
-    <div id="map" style="width:auto;height:450px;"></div>
-    <div class="row">
-      <div class="col-lg-6 col-md-6" style="background-color:#A1E3D8 ; border: 2px solid #446A46 ">
-        <h2>Latest Announcements</h2>
-        <ul>
-          <%selectedCity[0].latestAnnouncments.forEach(function(latestAnnouncment){%>
-          <li><%=latestAnnouncment%></li>
+      <div class="package-container w-100">
+        <div
+          class="container d-flex align-items-center justify-content-center flex-wrap w-100"
+        >
+          <%package.forEach(function(packageDetail,index){%>
+          <form class="" action="/selected-package" method="post">
+            <div class="box">
+              <div class="body">
+                <div class="imgContainer">
+                  <img src="/uploads/<%=packageDetail.packageImg%>" />
+                </div>
+                <div
+                  class="content d-flex flex-column align-items-center justify-content-center"
+                >
+                  <div>
+                    <h2 class="text-white fs-5">
+                      <%=selectedCity[0].cityName%> Package <%=index+1%>
+                    </h2>
+                    <ul>
+                      <li>Package Name:<%=packageDetail.packageName%></li>
+                      <li>Days:<%=packageDetail.packageDays%></li>
+                      <li>
+                        Pacakge Price(SAR):<%=packageDetail.packagePrice%>
+                      </li>
+                      <li>Package Type:<%=packageDetail.packageType%></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              type="submit"
+              style="margin: 2%"
+              class="btn btn-dark"
+              name="SelectedPackage"
+              value="<%=packageDetail.packageName%>"
+            >
+              Select
+            </button>
+          </form>
           <%})%>
-        </ul>
-      </div>
-      <div class="col-lg-6 col-md-6" style="background-color:#A1E3D8 ; border: 2px solid #446A46">
-        <div class="row">
-          <div class="col-sm-4">
-            <img src="<%=image_url%>" alt="">
-            <h5><%=description%></h5>
-          </div>
-          <div class="col-sm-8">
-            <h3 style="margin-top:30px;"><%=temperature%>°C</h3>
-            <h4><%=day%> <i class="fas fa-calendar-week"></i></h4>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about-city-content">
-    <div class="row">
-      <div class="clo-lg-12">
-        <h5 style="color:grey">"<%=selectedCity[0].cityDescription%>."</h5>
-      </div>
-    </div>
-  </section>
-  <section id="places-to-visit">
-    <h1 class="heading" style="margin-bottom:60px;">Places To visit</h1>
-    <div class="row">
-      <div class="col-lg-6">
-        <img class="visit-image" src="/uploads/<%=selectedCity[0].tourImage1%>" alt="">
-      </div>
-      <div class="col-lg-6 visit-info-holder">
-        <h3><%=selectedCity[0].tourplace1%></h3>
-        <p class="visit-info"><%=selectedCity[0].tourDescription1%>.</p>
-      </div>
-    </div>
-    <br><br>
-    <div class="row">
-      <div class="col-lg-6">
-        <img class="visit-image" src="/uploads/<%=selectedCity[0].tourImage2%>" alt="">
-      </div>
-      <div class="col-lg-6 visit-info-holder">
-        <h3><%=selectedCity[0].tourplace2%></h3>
-        <p class="visit-info"><%=selectedCity[0].tourDescription2%>.</p>
-      </div>
-    </div>
-    <br><br>
-    <div class="row">
-      <div class="col-lg-6">
-        <img class="visit-image" src="/uploads/<%=selectedCity[0].tourImage3%>" alt="">
-      </div>
-      <div class="col-lg-6 visit-info-holder">
-        <h3><%=selectedCity[0].tourplace3%></h3>
-        <p class="visit-info"><%=selectedCity[0].tourDescription3%>.</p>
-      </div>
-    </div>
-    <br><br>
-  </section>
-  <section id="packages">
-    <h1 class="heading">Select Package</h1>
-    <div class="container d-flex align-items-center justify-content-center flex-wrap">
-      <%package.forEach(function(packageDetail,index){%>
-      <form class="" action="/selected-package" method="post">
-        <div class="box">
-          <div class="body">
-            <div class="imgContainer">
-              <img src="/uploads/<%=packageDetail.packageImg%>">
-            </div>
-            <div class="content d-flex flex-column align-items-center justify-content-center">
-              <div>
-                <h2 class="text-white fs-5"><%=selectedCity[0].cityName%> Package <%=index+1%> </h2>
-                <ul>
-                  <li>Package Name:<%=packageDetail.packageName%></li>
-                  <li>Days:<%=packageDetail.packageDays%></li>
-                  <li>Pacakge Price(SAR):<%=packageDetail.packagePrice%></li>
-                  <li>Package Type:<%=packageDetail.packageType%></li>
+    <section id="about-city" class="city-details-section py-5">
+      <div class="container-fluid">
+        <!-- City Header -->
+        <div class="mb-5">
+          <h1 class="city-title display-4 fw-bold">
+            About <%=selectedCity[0].cityName%>
+          </h1>
+          <div class="title-underline mx-auto"></div>
+        </div>
+
+        <!-- Google Map -->
+        <div class="map-container mb-5">
+          <div id="map" class="city-map"></div>
+        </div>
+
+        <!-- City Information Cards -->
+        <div class="row g-4">
+          <!-- Latest Announcements Card -->
+          <div class="col-lg-6 col-md-12">
+            <div class="info-card announcements-card h-100">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-megaphone"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49-.202-.003A2.014 2.014 0 0 1 0 9V7a2.014 2.014 0 0 1 1.994-2.013A74.663 74.663 0 0 1 8.2 4.29a1.5 1.5 0 0 1 .8-.0 74.663 74.663 0 0 1 4 .713V2.5zM11.5 4.749a73.306 73.306 0 0 0-6.687-.377A73.306 73.306 0 0 0 1.5 4.924V9.075c2.77-.204 5.956-.349 9.5-.905V4.749zm1 0V8.17c.438-.034.84-.059 1.5-.086V4.749zM8.5 15.1h.548L7.776 9.678A73.077 73.077 0 0 0 8.5 9.72v5.38z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="card-title">Latest Announcements</h3>
+              </div>
+              <div class="card-body">
+                <ul class="announcements-list">
+                  <%selectedCity[0].latestAnnouncments.forEach(function(latestAnnouncment){%>
+                  <li class="announcement-item">
+                    <span class="announcement-bullet"></span>
+                    <span class="announcement-text"
+                      ><%=latestAnnouncment%></span
+                    >
+                  </li>
+                  <%})%>
                 </ul>
               </div>
             </div>
           </div>
+
+          <!-- Weather Information Card -->
+          <div class="col-lg-6 col-md-12">
+            <div class="info-card weather-card h-100">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    class="bi bi-cloud-sun"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M7 8a3.5 3.5 0 0 1 3.5 3.555.5.5 0 0 0 .624.492A1.503 1.503 0 0 1 13 13.5a1.5 1.5 0 0 1-1.5 1.5H3a2 2 0 1 1 .1-3.998.5.5 0 0 0 .51-.375A3.5 3.5 0 0 1 7 8zm4.473 3a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"
+                    />
+                    <path
+                      d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0v-1zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708l.707-.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708l-.708-.707zm1.714 3.242a.5.5 0 0 0-.707 0 .5.5 0 0 0 0 .707v.001a.5.5 0 0 0 .707 0 .5.5 0 0 0 0-.707v-.001zM10 5.5a.5.5 0 0 0-.5-.5H9a.5.5 0 0 0 0 1v.5a.5.5 0 0 0 1 0V5.5z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="card-title">Current Weather</h3>
+              </div>
+              <div class="card-body">
+                <div class="weather-content">
+                  <div class="weather-main d-flex align-items-center">
+                    <div class="weather-icon me-3">
+                      <img
+                        src="<%=image_url%>"
+                        alt="Weather Icon"
+                        class="weather-img"
+                      />
+                    </div>
+                    <div class="weather-info">
+                      <div class="temperature"><%=temperature%>°C</div>
+                      <div class="description"><%=description%></div>
+                    </div>
+                  </div>
+                  <div class="date-info mt-3">
+                    <div class="current-date">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-calendar-week me-2"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
+                        />
+                        <path
+                          d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
+                        />
+                      </svg>
+                      <span><%=day%></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <button type="submit" style="margin:2%; " class="btn btn-dark" name="SelectedPackage" value="<%=packageDetail.packageName%>"> Select</button>
-      </form>
-      <%})%>
-    </div>
-  </section>
-  <%- include('footer');  -%>
+      </div>
+    </section>
 
-  <script type="text/javascript">
-    // Initialize and add the map
-    function initMap() {
-      const uluru = {
-        lat: < %= x % > ,
-        lng: < %= y % > ,
-      };
-      console.log(uluru);
+    <section id="places-to-visit">
+      <h1 class="heading" style="margin-bottom: 60px">Places To visit</h1>
+      <div class="row">
+        <div class="col-lg-6">
+          <img
+            class="visit-image"
+            src="/uploads/<%=selectedCity[0].tourImage1%>"
+            alt=""
+          />
+        </div>
+        <div class="col-lg-6 visit-info-holder">
+          <h3><%=selectedCity[0].tourplace1%></h3>
+          <p class="visit-info"><%=selectedCity[0].tourDescription1%>.</p>
+        </div>
+      </div>
+      <br /><br />
+      <div class="row">
+        <div class="col-lg-6">
+          <img
+            class="visit-image"
+            src="/uploads/<%=selectedCity[0].tourImage2%>"
+            alt=""
+          />
+        </div>
+        <div class="col-lg-6 visit-info-holder">
+          <h3><%=selectedCity[0].tourplace2%></h3>
+          <p class="visit-info"><%=selectedCity[0].tourDescription2%>.</p>
+        </div>
+      </div>
+      <br /><br />
+      <div class="row">
+        <div class="col-lg-6">
+          <img
+            class="visit-image"
+            src="/uploads/<%=selectedCity[0].tourImage3%>"
+            alt=""
+          />
+        </div>
+        <div class="col-lg-6 visit-info-holder">
+          <h3><%=selectedCity[0].tourplace3%></h3>
+          <p class="visit-info"><%=selectedCity[0].tourDescription3%>.</p>
+        </div>
+      </div>
+      <br /><br />
+    </section>
 
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
-        center: uluru,
+    <%- include('footer'); -%>
 
-      });
+    <script type="text/javascript">
+      // Initialize and add the map
+      function initMap() {
+        // Parse coordinates and provide fallbacks
+        const lat = parseFloat("<%=x%>") || 21.4225; // Default to Mecca if no coordinates
+        const lng = parseFloat("<%=y%>") || 39.8262;
 
-      const marker = new google.maps.Marker({
-        position: uluru,
-        map: map,
+        const uluru = {
+          lat: lat,
+          lng: lng,
+        };
 
+        console.log("Map coordinates:", uluru);
 
-      });
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: uluru,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+        });
+
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+          title: "<%=selectedCity[0].cityName%>",
+        });
+      }
+
+      // Wait for page to load before initializing map
+      window.initMap = initMap;
+    </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD-85wDi4k3MCYcHVD2tGKMpAX27mLzlk&callback=initMap"
+    ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="main.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+<style>
+  /* City Details Section Styling */
+  .city-details-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f8ff 100%);
+    min-height: 100vh;
+  }
+
+  .city-title {
+    color: #36b5b0;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .title-underline {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #36b5b0, #20c997);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+
+  /* Map Styling */
+  .map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    height: 30rem;
+    /* max-width: 1200px; */
+  }
+
+  .city-map {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Card Styling */
+  .info-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(54, 181, 176, 0.1);
+    border: 1px solid rgba(54, 181, 176, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(54, 181, 176, 0.15);
+  }
+
+  .card-header {
+    background: linear-gradient(135deg, #36b5b0, #20c997);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+  }
+
+  .card-icon {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 12px;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .card-body {
+    padding: 2rem;
+  }
+
+  /* Announcements Styling */
+  .announcements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .announcement-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #36b5b0;
+    transition: all 0.2s ease;
+  }
+
+  .announcement-item:hover {
+    background: #e3f2fd;
+    transform: translateX(5px);
+  }
+
+  .announcement-bullet {
+    width: 8px;
+    height: 8px;
+    background: #36b5b0;
+    border-radius: 50%;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .announcement-text {
+    color: #2c3e50;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* Weather Styling */
+  .weather-content {
+    text-align: left;
+  }
+
+  .weather-main {
+    padding: 1rem;
+    background: linear-gradient(135deg, #e3f2fd, #f1f8ff);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+  }
+
+  .weather-icon {
+    flex-shrink: 0;
+  }
+
+  .weather-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  }
+
+  .temperature {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #36b5b0;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .description {
+    color: #6c757d;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  .date-info {
+    padding: 1rem;
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+  }
+
+  .current-date {
+    display: flex;
+    align-items: center;
+    color: #495057;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .current-date svg {
+    color: #36b5b0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .city-title {
+      font-size: 2rem;
     }
 
-    window.initMap = initMap;
-  </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD-85wDi4k3MCYcHVD2tGKMpAX27mLzlk&callback=initMap"></script>
+    .city-map {
+      height: 300px;
+    }
 
+    .card-header {
+      padding: 1rem;
+      flex-direction: column;
+      text-align: center;
+    }
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+    .card-icon {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
 
+    .card-body {
+      padding: 1.5rem;
+    }
 
-</html>
+    .weather-main {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .weather-icon {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+
+    .temperature {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .card-body {
+      padding: 1rem;
+    }
+
+    .announcement-item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .announcement-bullet {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+      align-self: center;
+    }
+  }
+</style>

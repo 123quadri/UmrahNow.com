@@ -21,37 +21,156 @@
 
 <body>
   <%- include('navbar');  -%>
-  <section id="top-cont" class="row">
-    <video src="videos/video.mp4" autoplay muted loop class="col-lg-7   left-vid" style="padding:0px;">
-    </video>
-    <div class="col-lg-5 ">
-      <h3 class="right-quote "> User Step by Step Guide</h3>
-      <ul class="right-quote ">
-        <li>Select A City where you want to go.</li>
-        <li>Select A Package accordingly.</li>
-        <li>Fill in your details.</li>
-        <li>Keep Token Number safe that is generated after you perform step 3.</li>
-        <li>Keep checking your tour status as we are working for you.</li>
-
-      </ul>
-
+<section id="top-cont" class="hero-section">
+  <div class="container-fluid p-0">
+    <div class="row g-0 min-vh-75 align-items-center">
+      <!-- Video Section -->
+      <div class="col-lg-7 position-relative">
+        <div class="video-container">
+          <video src="videos/video.mp4" autoplay muted loop class="w-100 h-100 object-fit-cover"></video>
+          <div class="video-overlay"></div>
+        </div>
+      </div>
+      
+      <!-- Content Section -->
+      <div class="col-lg-5 d-flex align-items-center ">
+        <div class="content-wrapper p-5">
+          <div class="guide-header mb-4">
+            <h2 class="display-6 fw-bold text-dark mb-3">Your Journey Starts Here</h2>
+            <p class="lead text-muted">Follow our simple step-by-step guide to book your perfect Umrah experience</p>
+          </div>
+          
+          <div class="steps-container">
+            <div class="step-item d-flex align-items-start mb-3">
+              <div class="step-number">
+                <span class="badge bg-primary rounded-circle p-2 me-3">1</span>
+              </div>
+              <div class="step-content">
+                <h6 class="fw-semibold mb-1">Choose Your Destination</h6>
+                <p class="text-muted mb-0 small">Select the holy city where you want to perform your Umrah</p>
+              </div>
+            </div>
+            
+            <div class="step-item d-flex align-items-start mb-3">
+              <div class="step-number">
+                <span class="badge bg-primary rounded-circle p-2 me-3">2</span>
+              </div>
+              <div class="step-content">
+                <h6 class="fw-semibold mb-1">Select Your Package</h6>
+                <p class="text-muted mb-0 small">Choose from our curated packages that suit your needs and budget</p>
+              </div>
+            </div>
+            
+            <div class="step-item d-flex align-items-start mb-3">
+              <div class="step-number">
+                <span class="badge bg-primary rounded-circle p-2 me-3">3</span>
+              </div>
+              <div class="step-content">
+                <h6 class="fw-semibold mb-1">Complete Your Details</h6>
+                <p class="text-muted mb-0 small">Fill in your personal information and travel preferences</p>
+              </div>
+            </div>
+            
+            <div class="step-item d-flex align-items-start mb-3">
+              <div class="step-number">
+                <span class="badge bg-warning rounded-circle p-2 me-3">4</span>
+              </div>
+              <div class="step-content">
+                <h6 class="fw-semibold mb-1">Save Your Token</h6>
+                <p class="text-muted mb-0 small">Keep your unique token number safe for tracking your booking</p>
+              </div>
+            </div>
+            
+            <div class="step-item d-flex align-items-start mb-4">
+              <div class="step-number">
+                <span class="badge bg-success rounded-circle p-2 me-3">5</span>
+              </div>
+              <div class="step-content">
+                <h6 class="fw-semibold mb-1">Track Your Journey</h6>
+                <p class="text-muted mb-0 small">Monitor your tour status as we prepare everything for you</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cta-section mt-4">
+            <a href="#cities" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">
+              Start Your Journey
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right ms-2" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+              </svg>
+            </a>
+            <p class="small text-muted mt-2 mb-0">Trusted by thousands of pilgrims worldwide</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="cities">
-    <h1 class=" heading">Select City</h1>
-    <div class="carousel" data-flickity='{ "contain": true }'>
+<section id="cities" class="cities-section py-5">
+  <div class="container-fluid px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-5">
+      <h2 class="section-title display-5 fw-bold text-dark mb-3">Choose Your Sacred Destination</h2>
+      <p class="section-subtitle lead text-muted mb-4">Discover the holy cities where your spiritual journey awaits</p>
+      <div class="title-divider mx-auto"></div>
+    </div>
+
+    <!-- Cities Carousel -->
+    <div class="cities-carousel" data-flickity='{ 
+      "contain": true, 
+      "wrapAround": false, 
+      "autoPlay": false,
+      "pauseAutoPlayOnHover": true,
+      "pageDots": true,
+      "prevNextButtons": true,
+      "cellAlign": "left",
+      "groupCells": false,
+      "freeScroll": false,
+      "percentPosition": false
+    }'>
       <%cityDetailsLists.forEach(function(cityDetailsList){%>
-      <div class="carousel-cell">
-        <form class="" action="/common" method="post">
+      <div class="city-card-wrapper">
+        <form action="/common" method="post" class="city-form">
           <input type="hidden" name="city_name" value="<%=cityDetailsList.cityName%>" />
-          <button class="city-image" type="submit" class="btn btn primary"><img class="city-image" src="/uploads/<%=cityDetailsList.cityImage%>"></button>
+          <button type="submit" class="city-card-button">
+            <div class="city-card">
+              <div class="city-image-container">
+                <img class="city-image" src="/uploads/<%=cityDetailsList.cityImage%>" alt="<%=cityDetailsList.cityName%>">
+                <div class="city-overlay">
+                  <div class="city-overlay-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="explore-icon" viewBox="0 0 16 16">
+                      <path d="M8 0C5.829 0 4.07 1.759 4.07 3.929c0 2.399 3.93 7.071 3.93 7.071s3.93-4.672 3.93-7.071C11.93 1.759 10.171 0 8 0zm0 5.357c-.896 0-1.621-.725-1.621-1.621S7.104 2.114 8 2.114s1.621.725 1.621 1.621S8.896 5.357 8 5.357z"/>
+                    </svg>
+                    <span class="explore-text">Explore</span>
+                  </div>
+                </div>
+              </div>
+              <div class="city-info">
+                <h4 class="city-name"><%=cityDetailsList.cityName%></h4>
+                <p class="city-description">Sacred destination for your spiritual journey</p>
+                <div class="city-badge">
+                  <span class="badge bg-primary">Available Now</span>
+                </div>
+              </div>
+            </div>
+          </button>
         </form>
-        <h3><%=cityDetailsList.cityName%></h3>
       </div>
       <%})%>
     </div>
-  </section>
+
+    <!-- Navigation Hint -->
+    <div class="text-center mt-2">
+      <p class="small text-muted">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right me-2" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+        </svg>
+        Swipe or use arrows to browse all destinations
+      </p>
+    </div>
+  </div>
+</section>
 
   <section id="services">
     <h1 class="service-heading heading">Our Services</h1>
@@ -152,9 +271,9 @@
   <%- include('footer');  -%>
 
 
-  <script src="cityname.js">
-    < script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" >
-  </script>
+  <script src="cityname.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </script>
@@ -162,3 +281,415 @@
 </body>
 
 </html>
+
+<style>
+  /* #top-cont {
+     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  } */
+
+.min-vh-75 {
+  min-height: 70vh;
+}
+
+.video-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  /* margin-top: rem; */
+}
+
+.video-container video {
+  object-fit: cover;
+  min-height: 700px;
+  
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+}
+
+.content-wrapper {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  margin: 2rem;
+  position: relative;
+  z-index: -2;
+}
+
+.step-item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.step-item:hover {
+  transform: translateX(5px);
+  background-color: #f8f9fa;
+}
+
+.step-number .badge {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,123,255,0.3);
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+}
+
+.guide-header h2 {
+  background: linear-gradient(135deg, #333 0%, #666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 992px) {
+  .content-wrapper {
+    margin: 1rem;
+    padding: 2rem !important;
+  }
+  
+  .video-container video {
+    min-height: 300px;
+  }
+  
+  .hero-section {
+    min-height: auto;
+  }
+  
+  .min-vh-75 {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 1.5rem !important;
+  }
+  
+  .step-item {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .step-number {
+    margin-bottom: 0.5rem;
+  }
+  
+  .step-number .badge {
+    margin-right: 0 !important;
+  }
+}
+
+
+/* CITY CSS */
+
+
+  
+.cities-section {
+  /* background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%); */
+  position: relative;
+  overflow: hidden;
+}
+
+.cities-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23000" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.section-title {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #20c997, #17a2b8);
+  border-radius: 2px;
+}
+
+/* Flickity Custom Styling */
+.cities-carousel {
+   /* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
+  margin: 0 -10px;
+  padding: 20px 0;
+}
+
+.cities-carousel .flickity-viewport {
+  overflow: visible;
+}
+
+.cities-carousel .flickity-slider {
+  background-color: #fafafa;
+  display: flex;
+  align-items: stretch;
+}
+
+.cities-carousel .flickity-page-dots {
+  bottom: -50px;
+}
+
+.cities-carousel .flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  background: #20c997;
+  border-radius: 50%;
+  margin: 0 8px;
+  transition: all 0.3s ease;
+}
+
+.cities-carousel .flickity-page-dots .dot.is-selected {
+  background: #17a2b8;
+  transform: scale(1.2);
+}
+
+.cities-carousel .flickity-prev-next-button {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: none;
+  top: 45%;
+}
+
+.cities-carousel .flickity-prev-next-button:hover {
+  background: #f8f9fa;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.cities-carousel .flickity-prev-next-button .flickity-button-icon {
+  fill: #20c997;
+}
+
+/* City Card Styling */
+.city-card-wrapper {
+  width: 320px;
+  margin: 0 15px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.city-form {
+  width: 100%;
+  height: 100%;
+}
+
+.city-card-button {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.city-card-button:hover {
+  transform: translateY(-8px);
+}
+
+.city-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  height: 400px;
+  margin: 10px;
+}
+
+.city-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.city-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.city-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.city-card:hover .city-image {
+  transform: scale(1.1);
+}
+
+.city-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(32,201,151,0.8) 0%, rgba(23,162,184,0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.city-card:hover .city-overlay {
+  opacity: 1;
+}
+
+.city-overlay-content {
+  text-align: center;
+  color: white;
+}
+
+.explore-icon {
+  margin-bottom: 8px;
+  animation: bounce 2s infinite;
+}
+
+.explore-text {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.city-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.city-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.city-description {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.city-badge .badge {
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: #20c997 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .city-card-wrapper {
+    width: 300px;
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .city-card-wrapper {
+    width: 280px;
+    margin: 0 10px;
+  }
+  
+  .cities-carousel .flickity-prev-next-button {
+    display: none;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .city-image-container {
+    height: 180px;
+  }
+  
+  .city-card {
+    height: 350px;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  .city-card-wrapper {
+    width: 260px;
+    margin: 0 8px;
+  }
+  
+  .city-info {
+    padding: 15px;
+  }
+  
+  .city-name {
+    font-size: 1.3rem;
+  }
+  
+  .city-card {
+    height: 320px;
+  }
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Loading Animation for Images */
+.city-image {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.city-image[src] {
+  animation: none;
+  background: none;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+</style>
