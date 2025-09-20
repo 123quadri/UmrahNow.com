@@ -21,9 +21,9 @@
 
 <body>
   <%- include('navbar');  -%>
-<section id="top-cont" class="hero-section">
-  <div class="container-fluid p-0">
-    <div class="row g-0 min-vh-75 align-items-center">
+<section id="top-cont" class="hero-section ">
+  <div class="container-fluid ">
+    <div class="row min-vh-75 align-items-center justify-content-center ">
       <!-- Video Section -->
       <div class="col-lg-7 position-relative z-index-1">
         <div class="video-container">
@@ -33,7 +33,7 @@
       </div>
       
       <!-- Content Section -->
-      <div class="col-lg-5 d-flex align-items-center ">
+      <div class="col-lg-5 d-flex align-items-center">
         <div class="content-wrapper p-5">
           <div class="guide-header mb-4">
             <h2 class="display-6 fw-bold text-dark mb-3">Your Journey Starts Here</h2>
@@ -367,7 +367,7 @@
 @media (max-width: 992px) {
   .content-wrapper {
     margin: 1rem;
-    padding: 2rem !important;
+    padding: 1rem !important;
   }
   
   .video-container video {
@@ -385,7 +385,8 @@
 
 @media (max-width: 768px) {
   .content-wrapper {
-    padding: 1.5rem !important;
+    margin: 0.5rem;
+    padding: 1rem !important;
   }
   
   .step-item {
@@ -401,6 +402,23 @@
   .step-number .badge {
     margin-right: 0 !important;
   }
+}
+
+@media (max-width: 576px) {
+  /* .content-wrapper {
+    margin: 0.25rem;
+    padding: 0.75rem !important;
+  } */
+
+  #top-cont {
+  /* background-color: #DEEDF0; */
+  padding: 0px 0px !important;
+  /* margin: 20px; */
+}
+
+.video-container{
+  margin-bottom: 25px;
+}
 }
 
 
